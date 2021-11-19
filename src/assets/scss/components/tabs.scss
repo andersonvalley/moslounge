@@ -1,0 +1,146 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+
+  &__nav {
+    background-color: transparent;
+    border: none;
+    color: $white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-right: 20px;
+    background: linear-gradient(to right, rgb(142, 13, 146), $main 50%, rgb(255, 255, 255) 50%);
+    display: inline-block;
+    overflow: hidden;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+
+    &:hover {
+      background-position: 0 100%;
+    }
+  }
+
+  &__nav:last-child {
+    margin-right: 0;
+  }
+
+  &__nav.active {
+    background: linear-gradient(to right, rgb(142, 13, 146), $main 50%, rgb(255, 255, 255) 50%);
+    display: inline-block;
+    overflow: hidden;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    background-position: 0 100%;
+    position: relative;
+  }
+}
+
+.tab-content {
+  &__item {
+    background-color: $gray;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+  }
+
+  &__benefits {
+    .show-attr {
+      margin-right: 10px;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__text {
+    font-size: 2.2rem;
+
+    p {
+      margin: 7px 0;
+      color: $main;
+    }
+
+    .metro {
+      position: relative;
+      padding-left: 35px;
+      &::before {
+        content: '';
+        background-image: url('../img/metro.svg');
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        left: 0;
+        top: -2px;
+      }
+    }
+  }
+
+  &__img {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 120%;
+      width: 50px;
+      background-color: $main;
+      left: 230px;
+      top: -10px;
+      z-index: 1;
+      transform: rotate(15deg);
+    }
+
+    &::after {
+      content: 'MOS';
+      position: absolute;
+      z-index: 2;
+      font-size: 2.3rem;
+      top: 60%;
+      transform: rotate(-73deg) translateX(50%);
+      left: 223px;
+    }
+
+    img {
+      width: 250px;
+    }
+  }
+
+  &__btns {
+    margin-right: 50px;
+
+    button {
+      display: block;
+      padding: 15px 30px;
+      width: 200px;
+      border-radius: 50px;
+    }
+
+    a {
+      display: block;
+      padding: 15px 30px;
+      width: 200px;
+      border-radius: 50px;
+      text-align: center;
+      margin-top: 10px;
+      background-color: transparent;
+      border: 2px solid $white;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}

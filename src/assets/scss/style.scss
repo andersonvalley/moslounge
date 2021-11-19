@@ -6,7 +6,10 @@
 
 @import 'components/header';
 @import 'components/hero';
+@import 'components/points';
 @import 'components/footer';
+@import 'components/preloader';
+@import 'components/tabs';
 
 .container {
   max-width: 1530px;

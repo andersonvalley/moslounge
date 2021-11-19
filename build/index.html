@@ -43,6 +43,13 @@
       </div>
     </header>
     <main class="main">
+        <div class="preloader">
+          <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+        </div>
+        
         
         <section class="hero">
           <div class="container hero__container">
@@ -52,7 +59,6 @@
                   <a href="#">
                     <svg width="35" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                       y="0px" viewBox="0 0 32 19" style="enable-background: new 0 0 32 19" xml:space="preserve" fill="#fff">
-                      </style>
                       <path class="st0"
                         d="M4.7,0H1.2C0.2,0,0,0.5,0,1c0,0.9,1.2,5.5,5.5,11.6c2.9,4.2,7,6.4,10.7,6.4c2.2,0,2.5-0.5,2.5-1.4v-3.1 c0-1,0.2-1.2,0.9-1.2c0.5,0,1.4,0.3,3.5,2.3c2.4,2.4,2.8,3.4,4.1,3.4h3.5c1,0,1.5-0.5,1.2-1.5c-0.3-1-1.4-2.4-3-4.1 c-0.8-1-2-2-2.4-2.5c-0.5-0.7-0.4-1,0-1.6c0,0,4.3-6,4.7-8c0.2-0.7,0-1.3-1.1-1.3h-3.5c-0.9,0-1.3,0.5-1.5,1c0,0-1.8,4.3-4.3,7.2 c-0.8,0.8-1.2,1.1-1.6,1.1c-0.2,0-0.5-0.3-0.5-1V1.3c0-0.9-0.3-1.3-1-1.3h-5.5c-0.6,0-0.9,0.4-0.9,0.8c0,0.8,1.3,1,1.4,3.4v5.2 c0,1.1-0.2,1.3-0.6,1.3c-1.2,0-4.1-4.4-5.8-9.3C5.9,0.4,5.6,0,4.7,0z">
                       </path>
@@ -100,7 +106,7 @@
                 </div>
         
                 <div class="hero__info">
-                  <div class="hero__fr">
+                  <div class=" hero__fr">
                     <a href="tel:8495000000">8 (495) 00-00-00</a>
                     <p>по вопросам франшизы</p>
                   </div>
@@ -115,13 +121,123 @@
                 </div>
               </div>
             </div>
-            <div class="hero__map">
-              <img src="assets/img/map.svg" alt="map" />
-              <img class="pins wow animate__animated animate__shakeY animate__infinite" src="assets/img/pins.svg" alt="map" />
+            <div class="hero__map" id="scene">
+              <img data-depth="0.2" src="assets/img/map.svg" alt="map" />
+              <img class="pins" src="assets/img/pins.svg" alt="map" />
             </div>
           </div>
-        </section>
-    </main>
+        
+        
+        </section><section class="points">
+          <div class="container">
+            <h2>Из какого вы <span>города</span>?</h2>
+        
+            <div class="tabs">
+              <button class="tabs__nav active">Москва</button>
+              <button class="tabs__nav">Москвcкая область</button>
+              <button class="tabs__nav">Нижний новгород</button>
+              <button class="tabs__nav">Якутск</button>
+              <button class="tabs__nav">Пятигорск</button>
+              <button class="tabs__nav">Сочи</button>
+            </div>
+        
+            <ul class="points__benefits">
+              <li class="points__item">
+                <div class="show-attr" data-title="DJ">
+                  <img src="assets/img/dj.svg" alt="dj">
+                </div>
+                <span>- есть DJ</span>
+              </li>
+        
+              <li class="points__item">
+                <div data-title="PS4" class="show-attr">
+                  <img src="assets/img/ps.svg" alt="ps4">
+                </div>
+                <span>- есть PS4</span>
+              </li>
+        
+              <li class="points__item">
+                <div data-title="Паркинг" class="show-attr">
+                  <img src="assets/img/parking.svg" alt="parking">
+                </div>
+                <span>- есть паркинг</span>
+              </li>
+        
+              <li class="points__item">
+                <div class="show-attr" data-title="VIP">
+                  <img src="assets/img/vip.svg" alt="vip">
+                </div>
+                <span>- есть VIP зона</span>
+              </li>
+        
+              <li class="points__item">
+                <div data-title="Веранда" class="show-attr">
+                  <img src="assets/img/veranda.svg" alt="veranda">
+                </div>
+                <span>- есть Веранда</span>
+              </li>
+        
+              <li class="points__item">
+                <div data-title="Кухня" class="show-attr">
+                  <img src="assets/img/kitchen.svg" alt="kitchen">
+                </div>
+                <span>- есть Кухня</span>
+              </li>
+            </ul>
+        
+            <div class="tab-content">
+              <div class="tab-content__item">
+        
+                <div class="tab-content__img">
+                  <picture>
+                    <source type="image/webp" srcset="assets/img/1x1.webp" data-srcset="assets/img/1.webp" />
+                    <img class="lazy" src="assets/img/1x1.webp" data-src="assets/img/1.png" alt="lounge" />
+                  </picture>
+                </div>
+        
+                <div class="tab-content__text">
+                  <p>Алтуфьево</p>
+                  <span>Алтуфьевское ш. 70к1</span>
+                  <p class="metro">Алтуфьево, Бибирево</p>
+                </div>
+        
+                <div class="tab-content__benefits points__item">
+                  <div data-title="PS4" class="show-attr">
+                    <img src="assets/img/ps.svg" alt="ps4">
+                  </div>
+        
+                  <div class="show-attr" data-title="DJ">
+                    <img src="assets/img/dj.svg" alt="dj">
+                  </div>
+        
+                  <div data-title="Паркинг" class="show-attr">
+                    <img src="assets/img/parking.svg" alt="parking">
+                  </div>
+        
+        
+                  <div class="show-attr" data-title="VIP">
+                    <img src="assets/img/vip.svg" alt="vip">
+                  </div>
+        
+                  <div data-title="Веранда" class="show-attr">
+                    <img src="assets/img/veranda.svg" alt="veranda">
+                  </div>
+        
+                  <div data-title="Кухня" class="show-attr">
+                    <img src="assets/img/kitchen.svg" alt="kitchen">
+                  </div>
+        
+        
+                </div>
+        
+                <div class="tab-content__btns">
+                  <button class="btn">Забронировать</button>
+                  <a href="#" class="btn">Подробнее</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>    </main>
 
     <footer class="footer">
     
