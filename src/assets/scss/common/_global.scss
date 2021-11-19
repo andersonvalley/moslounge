@@ -8,15 +8,27 @@ html {
   box-sizing: border-box;
 }
 
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
   font-family: 'Proxima Nova', sans-serif;
+  background: $black;
 }
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 10px;
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }

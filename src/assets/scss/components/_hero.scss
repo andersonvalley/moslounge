@@ -1,0 +1,13 @@
+.hero {
+  height: 800px;
+  background-image: url('../img/bg.svg');
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover;
+  padding-top: 50px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

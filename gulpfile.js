@@ -4,15 +4,16 @@ const { src, dest } = require('gulp'),
   browserSync = require('browser-sync').create(),
   autoprefixer = require('gulp-autoprefixer'),
   del = require('del'),
-  panini = require('panini'),
   groupMedia = require('gulp-group-css-media-queries'),
   cleanCss = require('gulp-clean-css'),
   rename = require('gulp-rename'),
   webp = require('gulp-webp'),
-  webphtml = require('gulp-webp-html'),
   webpack = require('webpack-stream'),
   htmlmin = require('gulp-html-minifier'),
-  webpcss = require('gulp-webpcss')
+  webpcss = require('gulp-webpcss'),
+  gulpif = require('gulp-if'),
+  panini = require('panini'),
+  imagemin = require('gulp-imagemin')
 
 const project_folder = 'build'
 const source_folder = 'src'
@@ -30,7 +31,7 @@ const path = {
     html: source_folder + '/*.html',
     css: source_folder + '/assets/scss/style.scss',
     js: source_folder + '/assets/js/*.js',
-    img: source_folder + '/assets/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}',
+    img: source_folder + '/assets/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp,mp4}',
     fonts: source_folder + '/assets/fonts/*.{woff,woff2,ttf,eot}',
   },
 
@@ -38,13 +39,15 @@ const path = {
     html: source_folder + '/**/*.html',
     css: source_folder + '/assets/scss/**/*.scss',
     js: source_folder + '/assets/js/**/*.js',
-    img: source_folder + '/assets/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}',
+    img: source_folder + '/assets/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp,mp4}',
   },
 
   clean: './' + project_folder + '/',
 }
 
-function html() {
+const isDev = process.env.NODE_ENV === 'development'
+
+const html = () => {
   panini.refresh()
   return src(path.src.html)
     .pipe(
@@ -56,16 +59,21 @@ function html() {
         data: source_folder + '/data/',
       })
     )
-    .pipe(webphtml())
     .pipe(dest(path.build.html))
-    .pipe(browserSync.stream())
+    .pipe(gulpif(!isDev, htmlmin({ collapseWhitespace: true })))
+    .pipe(
+      gulpif(
+        !isDev,
+        rename({
+          extname: '.min.html',
+        })
+      )
+    )
+    .pipe(gulpif(!isDev, dest(path.build.html)))
+    .pipe(gulpif(isDev, browserSync.stream()))
 }
 
-function fonts() {
-  return src(path.src.fonts).pipe(dest(path.build.fonts))
-}
-
-function css() {
+const css = () => {
   return src(path.src.css)
     .pipe(
       scss({
@@ -89,18 +97,17 @@ function css() {
       })
     )
     .pipe(dest(path.build.css))
-    .pipe(browserSync.stream())
+    .pipe(gulpif(isDev, browserSync.stream()))
 }
 
-function js() {
+const js = () => {
   return src(path.src.js)
     .pipe(
       webpack({
-        mode: 'development',
+        mode: isDev ? 'development' : 'production',
         output: {
           filename: 'script.js',
         },
-        watch: false,
         module: {
           rules: [
             {
@@ -127,81 +134,66 @@ function js() {
       })
     )
     .pipe(dest(path.build.js))
-    .pipe(browserSync.stream())
+    .pipe(gulpif(isDev, browserSync.stream()))
 }
 
-function images() {
+const images = () => {
   return src(path.src.img)
     .pipe(dest(path.build.img))
     .pipe(
       webp({
-        quality: 70,
+        quality: 90,
       })
     )
     .pipe(dest(path.build.img))
-
-    .pipe(browserSync.stream())
+    .pipe(
+      gulpif(
+        !isDev,
+        imagemin([
+          imagemin.gifsicle({ interlaced: true }),
+          imagemin.mozjpeg({ quality: 75, progressive: true }),
+          imagemin.optipng({ optimizationLevel: 5 }),
+          imagemin.svgo({
+            plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
+          }),
+        ])
+      )
+    )
+    .pipe(gulpif(!isDev, dest(path.build.img)))
+    .pipe(gulpif(isDev, browserSync.stream()))
 }
 
-function watchFiles() {
+const fonts = () => src(path.src.fonts).pipe(dest(path.build.fonts))
+
+const clean = () => del(path.clean)
+
+const watchFiles = () => {
   gulp.watch([path.watch.html], html)
   gulp.watch([path.watch.css], css)
   gulp.watch([path.watch.js], js)
   gulp.watch([path.watch.img], images)
 }
 
-function updateBrowser() {
-  browserSync.init({
-    server: {
-      baseDir: './' + project_folder + '/',
-    },
-    browser: 'google chrome',
-    notify: false,
-  })
+const updateBrowser = () => {
+  if (isDev) {
+    browserSync.init({
+      server: {
+        baseDir: './' + project_folder + '/',
+      },
+      browser: 'google chrome',
+      notify: false,
+    })
+  }
 }
 
-function clean() {
-  return del(path.clean)
-}
+const dev = gulp.series(clean, gulp.parallel(html, css, js, images, fonts), updateBrowser)
+const watch = gulp.parallel(watchFiles, dev)
 
-function Prod() {
-  fonts()
-  panini.refresh()
-  return src(path.src.html)
-    .pipe(
-      panini({
-        root: source_folder,
-        layouts: source_folder + '/layouts/',
-        partials: source_folder + '/partials/',
-        helpers: source_folder + '/helpers/',
-        data: source_folder + '/data/',
-      })
-    )
-    .pipe(webphtml())
-    .pipe(dest(path.build.html))
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(
-      rename({
-        extname: '.min.html',
-      })
-    )
-    .pipe(dest(path.build.html))
-}
-
-const build = gulp.series(
-  clean,
-  gulp.parallel(css, js, html, images, fonts),
-  updateBrowser
-)
-const watch = gulp.parallel(watchFiles, build)
-const prod = gulp.series(Prod)
-
-exports.prod = prod
 exports.html = html
 exports.css = css
 exports.js = js
 exports.fonts = fonts
 exports.images = images
-exports.build = build
+exports.dev = dev
 exports.watch = watch
 exports.default = watch

@@ -1,13 +1,15 @@
-@import 'vendor/reset';
-@import 'general/fonts';
-@import 'general/variables';
-@import 'general/global';
+@import '../../../node_modules/normalize.css/normalize.css';
+@import '../../../node_modules/animate.css/animate.min.css';
+@import 'common/fonts';
+@import 'common/variables';
+@import 'common/global';
 
-@import 'blocks/header';
-@import 'blocks/footer';
+@import 'components/header';
+@import 'components/hero';
+@import 'components/footer';
 
-
-
-
-
-
+.container {
+  max-width: 1530px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

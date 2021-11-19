@@ -1,0 +1,108 @@
+.header {
+  position: absolute;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-right: 6%;
+
+    img {
+      width: 160px;
+      height: 130px;
+      object-fit: cover;
+    }
+  }
+
+  &__btn {
+    flex-grow: 1;
+    transform: scale(0);
+
+    .btn-header {
+      display: flex;
+      margin-left: auto;
+      padding: 25px 90px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.9rem;
+
+      img {
+        width: 25px;
+        height: 25px;
+        margin-left: 15px;
+        animation-duration: 2s;
+      }
+    }
+  }
+}
+
+.header.header-fixed {
+  position: fixed;
+  background-color: $black;
+
+  .header__btn {
+    transform: scale(1);
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  .header__logo {
+    img {
+      height: 80px;
+    }
+  }
+}
+
+.menu {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    margin-right: 15px;
+
+    a {
+      color: #fff;
+      margin-right: 15px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 2.1rem;
+
+      background: linear-gradient(to right, rgb(142, 13, 146), $main 50%, rgb(255, 255, 255) 50%);
+      display: inline-block;
+      overflow: hidden;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 100%;
+      background-position: 100%;
+      transition: background-position 275ms ease;
+
+      &:hover {
+        background-position: 0 100%;
+      }
+    }
+  }
+
+  &__item:last-child {
+    margin-right: 0;
+  }
+}
+
+.btn {
+  background-color: $main;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+
+  &:hover {
+    background-color: darken($color: $main, $amount: 5);
+  }
+}
