@@ -1,7 +1,7 @@
 .header {
   position: absolute;
   width: 100%;
-
+  margin-top: 65px;
   &__container {
     display: flex;
     align-items: center;
@@ -9,10 +9,10 @@
 
   &__logo {
     margin-right: 6%;
+    margin-left: 30px;
 
     img {
-      width: 160px;
-      height: 130px;
+      width: 110px;
       object-fit: cover;
     }
   }
@@ -100,9 +100,10 @@
   border: none;
   color: $white;
   cursor: pointer;
-  transition: background-color 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 
   &:hover {
     background-color: darken($color: $main, $amount: 5);
+    box-shadow: 0px 0px 80px 10px rgb(255 0 134 / 65%);
   }
 }

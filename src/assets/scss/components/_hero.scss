@@ -4,10 +4,143 @@
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
-  padding-top: 50px;
+  padding-top: 150px;
 
   &__container {
     display: flex;
     justify-content: space-between;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 35px;
+    margin-top: 6%;
+    height: 100vh;
+  }
+
+  &__text {
+    font-size: 2.8rem;
+    font-weight: 700;
+    width: 70%;
+    margin-left: 10%;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+
+    h1 {
+      margin: 0;
+      color: $white;
+
+      span {
+        color: $main;
+      }
+    }
+  }
+
+  &__btns {
+    margin-top: 50px;
+
+    button {
+      box-shadow: 0px 0px 80px 10px rgb(255 0 134 / 60%);
+      font-size: 1.8rem;
+      border-radius: 50px;
+      padding: 17px 50px;
+      transition: box-shadow 100ms ease-in-out;
+    }
+
+    button:first-child {
+      margin-right: 15px;
+    }
+
+    .btn-black {
+      background-color: $black;
+
+      &:hover {
+        background-color: lighten($color: $black, $amount: 5);
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-top: 200px;
+
+    a {
+      color: inherit;
+      transition: color 200ms ease-in-out;
+
+      &:hover {
+        color: $main;
+      }
+    }
+
+    .hero__fr {
+      margin-right: 50px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  }
+
+  &__map {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 55%;
+    height: 100vh;
+
+    img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .pins {
+      position: absolute;
+      top: 0;
+      right: 0;
+      animation-duration: 12s;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__item {
+    margin-bottom: 90px;
+
+    a svg {
+      width: 30px;
+      transition: fill 200ms ease-in-out;
+    }
+
+    &:hover {
+      a svg {
+        fill: $main;
+      }
+    }
+  }
+
+  .hero__decor {
+    height: 80px;
+    width: 3px;
+    background-color: #fff;
+    animation: changeHeight 2s ease-in-out infinite;
+  }
+}
+
+@keyframes changeHeight {
+  from {
+    height: 40px;
+  }
+  to {
+    height: 80px;
   }
 }

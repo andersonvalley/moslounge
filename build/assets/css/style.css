@@ -49,6 +49,7 @@ img {
 .header {
   position: absolute;
   width: 100%;
+  margin-top: 65px;
 }
 
 .header__container {
@@ -62,11 +63,11 @@ img {
 
 .header__logo {
   margin-right: 6%;
+  margin-left: 30px;
 }
 
 .header__logo img {
-  width: 160px;
-  height: 130px;
+  width: 110px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -165,13 +166,15 @@ img {
   border: none;
   color: #fff;
   cursor: pointer;
-  -webkit-transition: background-color 200ms ease-in-out;
-  -o-transition: background-color 200ms ease-in-out;
-  transition: background-color 200ms ease-in-out;
+  -webkit-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .btn:hover {
   background-color: #e60079;
+  -webkit-box-shadow: 0px 0px 80px 10px rgba(255, 0, 134, 0.65);
+          box-shadow: 0px 0px 80px 10px rgba(255, 0, 134, 0.65);
 }
 
 .hero {
@@ -180,7 +183,7 @@ img {
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
-  padding-top: 50px;
+  padding-top: 150px;
 }
 
 .hero__container {
@@ -190,6 +193,176 @@ img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.hero__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-left: 35px;
+  margin-top: 6%;
+  height: 100vh;
+}
+
+.hero__text {
+  font-size: 2.8rem;
+  font-weight: 700;
+  width: 70%;
+  margin-left: 10%;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__text h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.hero__text h1 span {
+  color: #ff0086;
+}
+
+.hero__btns {
+  margin-top: 50px;
+}
+
+.hero__btns button {
+  -webkit-box-shadow: 0px 0px 80px 10px rgba(255, 0, 134, 0.6);
+          box-shadow: 0px 0px 80px 10px rgba(255, 0, 134, 0.6);
+  font-size: 1.8rem;
+  border-radius: 50px;
+  padding: 17px 50px;
+  -webkit-transition: -webkit-box-shadow 100ms ease-in-out;
+  transition: -webkit-box-shadow 100ms ease-in-out;
+  -o-transition: box-shadow 100ms ease-in-out;
+  transition: box-shadow 100ms ease-in-out;
+  transition: box-shadow 100ms ease-in-out, -webkit-box-shadow 100ms ease-in-out;
+}
+
+.hero__btns button:first-child {
+  margin-right: 15px;
+}
+
+.hero__btns .btn-black {
+  background-color: #000;
+}
+
+.hero__btns .btn-black:hover {
+  background-color: #0d0d0d;
+}
+
+.hero__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.4rem;
+  color: #fff;
+  margin-top: 200px;
+}
+
+.hero__info a {
+  color: inherit;
+  -webkit-transition: color 200ms ease-in-out;
+  -o-transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
+}
+
+.hero__info a:hover {
+  color: #ff0086;
+}
+
+.hero__info .hero__fr {
+  margin-right: 50px;
+}
+
+.hero__info p {
+  margin: 5px 0;
+}
+
+.hero__map {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100vh;
+}
+
+.hero__map img {
+  width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.hero__map .pins {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-animation-duration: 12s;
+          animation-duration: 12s;
+}
+
+.social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.social__item {
+  margin-bottom: 90px;
+}
+
+.social__item a svg {
+  width: 30px;
+  -webkit-transition: fill 200ms ease-in-out;
+  -o-transition: fill 200ms ease-in-out;
+  transition: fill 200ms ease-in-out;
+}
+
+.social__item:hover a svg {
+  fill: #ff0086;
+}
+
+.social .hero__decor {
+  height: 80px;
+  width: 3px;
+  background-color: #fff;
+  -webkit-animation: changeHeight 2s ease-in-out infinite;
+          animation: changeHeight 2s ease-in-out infinite;
+}
+
+@-webkit-keyframes changeHeight {
+  from {
+    height: 40px;
+  }
+
+  to {
+    height: 80px;
+  }
+}
+
+@keyframes changeHeight {
+  from {
+    height: 40px;
+  }
+
+  to {
+    height: 80px;
+  }
 }
 
 .container {
