@@ -1,11 +1,16 @@
 .points {
   margin-top: 100px;
-  h2 {
-    font-size: 4.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    span {
-      color: $main;
+
+  @include _1170 {
+    .points__benefits {
+      flex-wrap: wrap;
+    }
+  }
+
+  @include _768 {
+    &__benefits {
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -18,11 +23,8 @@
   &__item {
     display: flex;
     align-items: center;
-    margin-right: 50px;
-
-    span {
-      text-transform: uppercase;
-    }
+    margin-right: 30px;
+    margin-bottom: 20px;
   }
 
   &__item:last-child {

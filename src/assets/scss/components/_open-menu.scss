@@ -1,0 +1,74 @@
+.open-menu {
+  padding: 100px 50px;
+  position: relative;
+  --animate-duration: 10s;
+
+  @include _480 {
+    padding: 100px 0;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @include _979 {
+      .open-menu__button {
+        .title {
+          font-size: 4rem;
+        }
+
+        .btn {
+          padding: 10px 50px;
+        }
+      }
+    }
+
+    @include _768 {
+      flex-direction: column;
+
+      .open-menu__button {
+        .btn {
+          padding: 15px 60px;
+        }
+      }
+
+      .open-menu__img {
+        flex-basis: 100%;
+      }
+    }
+
+    @include _480 {
+      .open-menu__img {
+        padding-right: 0;
+      }
+
+      .open-menu__button {
+        .title {
+          font-size: 3.5rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__img {
+    flex-basis: 50%;
+    padding-right: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    .title {
+      font-size: 5rem;
+    }
+
+    .btn {
+      border-radius: 50px;
+      padding: 18px 80px;
+    }
+  }
+}

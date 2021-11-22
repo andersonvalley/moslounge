@@ -3,6 +3,7 @@
 @import 'common/fonts';
 @import 'common/variables';
 @import 'common/global';
+@import 'common/mixins';
 
 @import 'components/header';
 @import 'components/hero';
@@ -10,9 +11,49 @@
 @import 'components/footer';
 @import 'components/preloader';
 @import 'components/tabs';
+@import 'components/open-menu';
+@import 'components/mobile-app';
+@import 'components/franchise';
+@import 'components/smoke';
 
 .container {
   max-width: 1530px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+.wrapper {
+  background-image: url('../img/bg.svg');
+  background-repeat: repeat-y;
+  position: relative;
+}
+
+.title {
+  font-size: 4.5rem;
+  font-weight: 900;
+  padding: 25px 0;
+  margin: 0;
+
+  span {
+    color: $main;
+  }
+
+  @include _1170 {
+    font-size: 4.2rem;
+  }
+}
+
+.subtitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  padding: 5px 0;
+  margin: 0;
+
+  span {
+    color: $main;
+  }
+
+  @include _1170 {
+    font-size: 2.5rem;
+  }
 }

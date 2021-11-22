@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const scene = document.getElementById('scene')
   const parallaxInstance = new Parallax(scene)
 
-  window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader')
-    preloader.classList.add('preloader_hidden')
-  })
+  // window.addEventListener('load', () => {
+  //   const preloader = document.querySelector('.preloader')
+  //   preloader.classList.add('preloader_hidden')
+  // })
 })

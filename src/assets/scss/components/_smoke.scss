@@ -1,0 +1,9 @@
+.smoke {
+  position: absolute;
+  z-index: -1;
+  left: -30%;
+  top: -15%;
+  width: 100%;
+  filter: brightness(0.2);
+  --animate-duration: 10s;
+}
